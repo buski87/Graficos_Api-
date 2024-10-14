@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos de Animales con Chart JS</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        canvas {
+            max-width: 300px; /* Ajusta el tamaño máximo de los gráficos */
+            max-height: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Tipos de gráficos</h1>
+
+    <div class="chart-container">
+        <canvas id="pieChart"></canvas>
+        <canvas id="barChart"></canvas>
+        <canvas id="lineChart"></canvas>
+    </div>
+
+    <script>
+        const ctxPie = document.getElementById('pieChart').getContext('2d');
+        const pieChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: ['Perros', 'Gatos'],
+                datasets: [{
+                    data: [70, 30], // 70% perros, 30% gatos
+                    backgroundColor: ['#FF6384', '#36A2EB']
+                }]
+            }
+        });
+
+        const ctxBar = document.getElementById('barChart').getContext('2d');
+        const barChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Perros', 'Gatos'],
+                datasets: [{
+                    label: 'Cantidad',
+                    data: [50, 30], // Cantidad de perros y gatos
+                    backgroundColor: ['#FF6384', '#36A2EB']
+                }]
+            }
+        });
+
+        const ctxLine = document.getElementById('lineChart').getContext('2d');
+        const lineChart = new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: ['Enero', 'Febrero', 'Marzo', 'Abril'],
+                datasets: [{
+                    label: 'Mascotas adoptadas',
+                    data: [15, 25, 20, 30], // Ejemplo de adopciones de perros y gatos
+                    borderColor: '#FF6384',
+                    fill: false
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
